@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>4E Plays Nomic</title>
+  </head>
+
+  <body>
+
+    {%- block topbar -%}
+      <h1>Nomic Voting</h1>
+    {%- endblock -%}
+
+    <main>
+      {% block page_header %}{% endblock %}
+      {% block content %}{% endblock %}
+    </main>
+    {% block js_footer %}{% endblock %}
+  </body>
+</html>
