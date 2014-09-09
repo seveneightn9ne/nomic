@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"><!-- Latest compiled and minified CSS -->
+<!--     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ -->
+    <!-- Optional theme -->
+   <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
+    <link href="/static/style.css" rel="stylesheet">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>4E Plays Nomic</title>
   </head>
 
   <body>
-
     {%- block topbar -%}
-      <h1>Nomic Voting</h1>
+    <h1>Nomic Voting</h1>
+    <p>Turns doc: <a href="https://docs.google.com/document/d/1Pn2FpCDwTFHMEQzATSqi7eaJtgzOc6X5DpQ4E1dIAbY" target="_blank">https://docs.google.com/document/d/1Pn2FpCDwTFHMEQzATSqi7eaJtgzOc6X5DpQ4E1dIAbY</a></p>
+
+    <p>Active rules: <a href="https://docs.google.com/document/d/1_BVIwRUbUZZ5MEw6cReGyIJkWdJ7KRTy6-8c8MJhAhQ" target="_blank">https://docs.google.com/document/d/1_BVIwRUbUZZ5MEw6cReGyIJkWdJ7KRTy6-8c8MJhAhQ</a>
+
     {%- endblock -%}
 
-    <main>
-      {% block page_header %}{% endblock %}
-      {% block content %}{% endblock %}
-    </main>
+    {% block page_header %}{% endblock %}
+    {% block content %}{% endblock %}
+
     {% block js_footer %}{% endblock %}
   </body>
 </html>

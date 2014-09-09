@@ -2,36 +2,45 @@
 
 {% block content %}
     {% for proposal in proposals %}
-      <h3>Proposal [{{ proposal.number }}]</h3>
-      <p>
-        {% with total=proposal.votes|length %}
-            {{ total }} vote {%- if total != 1 %}s{%- endif -%}:
-        {% endwith %}
-      </p>
+      <article class="proposal">
+        <h2>Proposal {{ proposal.number }} <small>({{ proposal.created_by }})</small></h2>
+        <p>
+          {% with total=proposal.votes|length %}
+              {{ total }} vote {%- if total != 1 %}s{%- endif -%}:
+          {% endwith %}
+        </p>
 
-      <form action="/vote/{{ proposal.id }}" method="post">
-      <table>
-        {% for vote in proposal.votes %}
-          <tr>
-            <td>{{ vote.name }}</td>
-            <td>{{ vote.vote }}</td>
-          </tr>
-        {% endfor %}
-        <tr>
-          <td><input type="text" name="name" placeholder="name"></td>
-          <td><input type="text" name="vote" placeholder="vote">
-              <input type="submit" name="submit" value="vote"></td>
-        </tr>
-      </table>
-      <a href="/reveal/{{ proposal.id }}">Reveal the votes</a>
+        <form action="/vote/{{ proposal.id }}" method="post">
+        <table>
+          {% for vote in proposal.votes %}
+            <tr>
+              <td>{{ vote.name }}</td>
+              <td>{{ vote.vote }}</td>
+            </tr>
+          {% endfor %}
 
-      <a href="/archive/{{ proposal.id }}">Archive this proposal</a>
+          {% if not proposal.votes_revealed %}
+            <tr>
+              <td><input type="text" name="name" placeholder="name" size="10"></td>
+              <td><input type="text" name="vote" placeholder="vote" size="10">
+                  <input type="submit" name="submit" value="vote"></td>
+            </tr>
+          {% endif %}
+        </table>
+        </form>
+        <br />
+        {% if not proposal.votes_revealed %}
+          <a href="/reveal/{{ proposal.id }}" class="button">Reveal the votes (closes voting)</a>
+        {% else %}
+          <a href="/archive/{{ proposal.id }}" class="button">Archive this proposal</a>
+        {% endif %}
+      </article>
     {% endfor %}
-
-    <h2>New Proposal</h2>
-    <form action="." method="post">
-    <input type="text" name="number" placeholder="Proposal #"><br>
-    <input type="text" name="created_by" placeholder="Created By"><br>
-    <input type="submit" value="propose">
-  </form>
+    <article class="proposal new">
+      <h2>New Proposal</h2>
+      <form action="." method="post">
+        <p><input type="text" name="number" placeholder="Proposal #">
+        <input type="text" name="created_by" placeholder="Created By">
+        <input type="submit" value="propose"></p>
+      </form>
 {% endblock %}

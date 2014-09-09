@@ -35,7 +35,7 @@ def list():
     if request.method == 'GET':
         return render_template('proposals/list.html', proposals=get_sanitized_proposals())
     else: # POST
-        proposal = Proposal.from_form_data(request.form)
+        proposal = Proposal(created_by=request.form['created_by'], number=request.form['number'])
         proposal.save()
 
         return render_template('proposals/list.html', proposals=get_sanitized_proposals())
