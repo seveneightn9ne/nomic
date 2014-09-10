@@ -3,7 +3,10 @@
 {% block content %}
     {% for proposal in proposals %}
       <article class="proposal">
-        <h2>Proposal {{ proposal.number }} <small>({{ proposal.created_by }})</small></h2>
+        <h2>Proposal {{ proposal.number }}
+          <small>by {{ proposal.created_by }}</small>
+          <small>{{ proposal.created_at.strftime('%m/%d %I:%M %p') }}</small>
+        </h2>
         <p>
           {% with total=proposal.votes|length %}
               {{ total }} vote {%- if total != 1 %}s{%- endif -%}:

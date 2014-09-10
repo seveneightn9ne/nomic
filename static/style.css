@@ -42,6 +42,10 @@ body > p {
 .proposal h2 small {
     font-weight: normal;
     color: #666;
+    margin: 0 10px;
+}
+.proposal h2 small:first-child {
+    margin-left: 20px;
 }
 .proposal th {
     text-align: left;
