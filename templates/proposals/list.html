@@ -10,7 +10,7 @@
           {% endwith %}
         </p>
 
-        <form action="/vote/{{ proposal.id }}" method="post">
+        <form action="{{ url_for('add_vote', proposal_id=proposal.id) }}" method="post">
         <table>
           {% for vote in proposal.votes %}
             <tr>
@@ -30,9 +30,9 @@
         </form>
         <br />
         {% if not proposal.votes_revealed %}
-          <a href="/reveal/{{ proposal.id }}" class="button">Reveal the votes (closes voting)</a>
+          <a href="{{ url_for('reveal', proposal_id=proposal.id) }}" class="button">Reveal the votes (closes voting)</a>
         {% else %}
-          <a href="/archive/{{ proposal.id }}" class="button">Archive this proposal</a>
+          <a href="{{ url_for('archive', proposal_id=proposal.id) }}" class="button">Archive this proposal</a>
         {% endif %}
       </article>
     {% endfor %}
