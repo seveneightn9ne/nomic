@@ -12,17 +12,24 @@
 
         <form action="{{ url_for('add_vote', proposal_id=proposal.id) }}" method="post">
         <table>
+            <tr>
+              <th>Name</th>
+              <th>Vote</th>
+              <th>Hate Upon</th>
+            </tr>
           {% for vote in proposal.votes %}
             <tr>
               <td>{{ vote.name }}</td>
               <td>{{ vote.vote }}</td>
+              <td>{{ vote.hate_upon }}</td>
             </tr>
           {% endfor %}
 
           {% if not proposal.votes_revealed %}
             <tr>
               <td><input type="text" name="name" placeholder="name" size="10"></td>
-              <td><input type="text" name="vote" placeholder="vote" size="10">
+              <td><input type="text" name="vote" placeholder="vote" size="10"></td>
+              <td><input type="text" name="hate_upon" placeholder="hate upon" size="10">
                   <input type="submit" name="submit" value="vote"></td>
             </tr>
           {% endif %}

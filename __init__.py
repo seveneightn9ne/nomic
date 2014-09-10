@@ -29,6 +29,7 @@ def get_sanitized_proposals():
         if not proposal.votes_revealed:
             for vote in proposal.votes:
                 vote.vote = "[hidden]"
+                vote.hate_upon = "[hidden]"
     return proposals
 
 @app.route('/', methods=['GET', 'POST'])
@@ -43,7 +44,7 @@ def list():
 
 @app.route('/vote/<proposal_id>', methods=['POST'])
 def add_vote(proposal_id):
-    vote = Vote(name=request.form['name'], vote=request.form['vote'])
+    vote = Vote(name=request.form['name'], vote=request.form['vote'], hate_upon=request.form['hate_upon'])
     proposal = Proposal.objects.get_or_404(id=proposal_id)
 
     existing_votes = filter(lambda v: v.name == vote.name, proposal.votes)
@@ -51,6 +52,7 @@ def add_vote(proposal_id):
         existing_vote = existing_votes[0]
         existing_vote.created_at = vote.created_at
         existing_vote.vote = vote.vote
+        existing_vote.hate_upon = vote.hate_upon
     else:
         proposal.votes.append(vote)
 
