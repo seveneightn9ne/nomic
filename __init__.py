@@ -1,11 +1,12 @@
 from flask import Flask, redirect, request, render_template, url_for
 from flask.ext.mongoengine import MongoEngine
-
+from proxy import ReverseProxied
 # from nomic.views import proposals, votes
 
 app = Flask(__name__)
 app.config["MONGODB_SETTINGS"] = {'DB': "nomic_db"}
 app.config["SECRET_KEY"] = "super-secret"
+app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 db = MongoEngine(app)
 
