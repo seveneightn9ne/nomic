@@ -10,9 +10,18 @@ body {
 }
 h1 {
     margin: 0;
-    background-color: #6f5499;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
+
+    background: #6f5499; /* Old browsers */
+    background: -moz-linear-gradient(top,  #6f5499 0%, #563B80 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#6f5499), color-stop(100%,#563B80)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #6f5499 0%,#563B80 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #6f5499 0%,#563B80 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #6f5499 0%,#563B80 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #6f5499 0%,#563B80 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6f5499', endColorstr='#563B80',GradientType=0 ); /* IE6-9 */
+
 }
 body > p {
     margin: 20px;
