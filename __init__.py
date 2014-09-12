@@ -47,7 +47,7 @@ def add_vote(proposal_id):
     vote = Vote(name=request.form['name'], vote=request.form['vote'], hate_upon=request.form['hate_upon'])
     proposal = Proposal.objects.get_or_404(id=proposal_id)
 
-    existing_votes = filter(lambda v: v.name == vote.name, proposal.votes)
+    existing_votes = filter(lambda v: v.name.lower().strip() == vote.name.lower().strip(), proposal.votes)
     if len(existing_votes) > 0:
         existing_vote = existing_votes[0]
         existing_vote.created_at = vote.created_at
