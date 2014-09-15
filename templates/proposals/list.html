@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <article class="proposal new">
+      <h2>New Proposal</h2>
+      <form action="." method="post">
+        <p><input type="text" name="number" placeholder="Proposal #">
+        <input type="text" name="created_by" placeholder="Created By">
+        <input type="submit" value="propose"></p>
+      </form>
+    </article>
     {% for proposal in proposals %}
       <article class="proposal">
         <h2>Proposal {{ proposal.number }}
@@ -46,12 +54,4 @@
         {% endif %}
       </article>
     {% endfor %}
-    <article class="proposal new">
-      <h2>New Proposal</h2>
-      <form action="." method="post">
-        <p><input type="text" name="number" placeholder="Proposal #">
-        <input type="text" name="created_by" placeholder="Created By">
-        <input type="submit" value="propose"></p>
-      </form>
-    </article>
 {% endblock %}
