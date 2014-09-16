@@ -5,7 +5,6 @@ from proxy import ReverseProxied
 
 app = Flask(__name__)
 app.config["MONGODB_SETTINGS"] = {'DB': "nomic_db"}
-app.config["SECRET_KEY"] = "super-secret"
 app.wsgi_app = ReverseProxied(app.wsgi_app)
 
 db = MongoEngine(app)
