@@ -30,6 +30,7 @@ def get_sanitized_proposals():
             for vote in proposal.votes:
                 vote.vote = "[hidden]"
                 vote.hate_upon = "[hidden]"
+                vote.love = "[hidden]"
     return proposals
 
 @app.route('/', methods=['GET', 'POST'])
@@ -53,6 +54,7 @@ def add_vote(proposal_id):
         existing_vote.created_at = vote.created_at
         existing_vote.vote = vote.vote
         existing_vote.hate_upon = vote.hate_upon
+        existing_vote.love = vote.love
     else:
         proposal.votes.append(vote)
 

@@ -27,3 +27,4 @@ class Vote(db.EmbeddedDocument):
     name = db.StringField(max_length=255, required=True)
     vote = db.StringField(max_length=255, required=True)
     hate_upon = db.StringField(max_length=255, required=False)
+    love = db.StringField(max_length=255, required=False)
