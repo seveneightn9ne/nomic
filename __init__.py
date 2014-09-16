@@ -11,17 +11,6 @@ db = MongoEngine(app)
 
 from models import Proposal, Vote
 
-# def register_blueprints(app):
-#     # Prevents circular imports
-#     from nomic.views import proposals, votes
-#     app.register_blueprint(proposals)
-#     app.register_blueprint(votes)
-
-# register_blueprints(app)
-
-# app.register_blueprint(proposals)
-# app.register_blueprint(votes)
-
 def get_sanitized_proposals():
     proposals = Proposal.objects(archived=False)
     for proposal in proposals:
